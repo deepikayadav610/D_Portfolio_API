@@ -14,9 +14,9 @@ app.use(cors({
 }))
 app.use('/api', userRouter)
 
-mongoose.connect("mongodb+srv://deepika-610:Deepikasimran@cluster0.6z70n.mongodb.net/",{
-    dbName:"D_Portfolio"
+mongoose.connect(process.env.MONGO_URI,{
+    dbName:process.env.DB_NAME
 }).then(()=> console.log("MongoDB is connected....")).catch((err) => console.log(err.message));
 
-const port= 3000;
+const port= process.env.PORT||3000;
 app.listen(port, () =>console.log(`server is running on port ${port}`))
